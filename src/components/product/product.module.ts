@@ -6,6 +6,7 @@ import { ProductRepository } from "../product/repositories/product.repository";
 import { ProductServiceInterface } from "../product/interface/product.service.interface";
 import { ProductController } from "./product.controller";
 import { ProductService } from "./product.service";
+import { SearchService } from "src/services/search/search.service";
 
 
 @Module({
@@ -16,9 +17,13 @@ import { ProductService } from "./product.service";
       useClass: ProductRepository
     },
     {
-      provide: "ProductServiceInterface",
+      provide: 'ProductServiceInterface',
       useClass: ProductService
     },
+    {
+      provide: "SearchServiceInterface",
+      useClass: SearchService
+    }
     
   ],
   controllers: [ProductController]
